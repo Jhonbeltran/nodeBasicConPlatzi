@@ -14,7 +14,8 @@ var web = express();
 var parcero = require("body-parser");
 //Los algoritmos que hacen parse convierten de un tipo de datos a otro
 //Le decimos a express que use el sistema de codificacion de parse :)
-web.use(parcero.urlencoded());
+// web.use(parcero.urlencoded());
+web.use(parcero.urlencoded({extended:true}))
 var server;
 
 //web escucha a el puerto 8080 y ejecuta una funcion anonima
@@ -73,7 +74,7 @@ web.get("/BuhoMachine/faq", function(req, res) {
 });
 
 /*
-Tuvimos que instalar sudo (antes instalamos express usando npm tambien)
+Tuvimos que instalar body-parser (antes instalamos express usando npm tambien)
 ➜  node git:(master) ✗ npm install body-parser
 /home/jhon
 ├─┬ body-parser@1.15.1 
@@ -94,3 +95,6 @@ body-parser deprecated undefined extended: provide extended option backend.js:17
 express deprecated res.sendfile: Use res.sendFile instead backend.js:34:6
 acá debajo estan las variables :)
 { usuario: 'Jhon', clave: 'jajaj', enviar: 'Entrar' }*/
+
+/*acá estan todos los modulos que tengo instalados
+/usr/local/lib/node_modules*/
