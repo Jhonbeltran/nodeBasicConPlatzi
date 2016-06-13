@@ -1,3 +1,9 @@
+var basededatos = {
+	usuario: "Jhon",
+	password: "galletas"
+};
+
+
 console.log("Oh por dios se programar backend");
 
 //require es una instruccion del js que corre del lado del servidor nodeJS
@@ -19,19 +25,29 @@ get es una funcion de express();
 el cual usa una funcion anonima que recibe como parametros
 req = requirement(requerimiento) y res = response(respuesta)*/
 web.get("/", function(req, res) {
-	//res.send = enviar una respuesta
-	res.send("Vea mano el server web");
+	//Así enviamos un archivo html para que se abra en el navegador.
+	//Para ver los cambios en archivos estaticos no necesitamos reiniciar el navegador
+	res.sendfile("formulario.html");
 });
 
+web.post("/entrar", function(req, res) {
+	
+	console.log(req);
+});
+
+
+
+
+//Pruebas
 web.get("/test", function(req, res) {
-	//res.send = enviar una respuesta
-	//Esto nos despliega una variable json en la consola (server)
-	// console.log(req);
-	//en una sub variable res.query vamos a encontrar las variables que
-	//enviamos por GET
+	/*res.send = enviar una respuesta
+	Esto nos despliega una variable json en la consola (server)
+	console.log(req);
+	en una sub variable res.query vamos a encontrar las variables que
+	enviamos por GET*/
 	res.send("Los datos que escribimos en el GET son: dia = "+req.query.dia+" mes = "+req.query.mes);
-	//Acá enviamos variables por medio de get
-	//http://localhost:8080/test?dia=lunes&mes=06
+	/*Acá enviamos variables por medio de get
+	http://localhost:8080/test?dia=lunes&mes=06*/
 });
 
 web.get("/BuhoMachine/faq", function(req, res) {

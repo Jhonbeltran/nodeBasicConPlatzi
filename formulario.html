@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>NodeJS</title>
+</head>
+<body>
+	<h2>Ingresar</h2>
+	<!-- el formulario va a tomar las variables con el metodo post y lo va a mostrar en la url enviar -->
+	<form method="post" action="/entrar">
+		<!-- desde action="get" sale esto: 
+		http://localhost:8080/get?usuario=Jhon&clave=pepito&enviar=Entrar -->
+		<!-- id para frontend y name para backend -->
+		<h4>Usuario</h4>
+		<input type="text" id="user" name="usuario"/>
+		<h4>Contraseña</h4>
+		<input type="password" id="password" name="clave"/>
+		<input type="submit" id="enviar" name="enviar" value="Entrar">
+	</form>
+</body>
+</html>
