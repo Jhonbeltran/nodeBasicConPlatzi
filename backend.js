@@ -10,7 +10,11 @@ console.log("Oh por dios se programar backend");
 var express = require("express");
 //metemos la libreria en la var web
 var web = express();
-
+//Variable que contiene el body-parser
+var parcero = require("body-parser");
+//Los algoritmos que hacen parse convierten de un tipo de datos a otro
+//Le decimos a express que use el sistema de codificacion de parse :)
+web.use(parcero.urlencoded());
 var server;
 
 //web escucha a el puerto 8080 y ejecuta una funcion anonima
@@ -31,8 +35,22 @@ web.get("/", function(req, res) {
 });
 
 web.post("/entrar", function(req, res) {
-	
-	console.log(req);
+	/*Acá llegan los datos
+	console.log(req.body);
+	Siempre debemos enviar algo
+	res.send("U R Inside ( ͡° ͜ʖ ͡°)");*/
+
+	if(req.body.usuario == basededatos.usuario && req.body.clave == basededatos.password){
+
+		res.send("U R Inside ( ͡° ͜ʖ ͡°)");
+
+	}
+	else{
+
+		res.send("Su usuario o contraseña no son correctos.");
+
+	}
+
 });
 
 
@@ -54,3 +72,25 @@ web.get("/BuhoMachine/faq", function(req, res) {
 	res.send("Le <strong>faq</strong> :3");
 });
 
+/*
+Tuvimos que instalar sudo (antes instalamos express usando npm tambien)
+➜  node git:(master) ✗ npm install body-parser
+/home/jhon
+├─┬ body-parser@1.15.1 
+│ ├── bytes@2.3.0 
+│ ├── http-errors@1.4.0 
+│ ├── iconv-lite@0.4.13 
+│ ├── qs@6.1.0 
+│ └── raw-body@2.1.6 
+├── express@4.13.4 
+└── passport@0.3.2 
+*/
+
+/*Esto nos sale despues de instalar el body-parser
+(en el server)
+body-parser deprecated undefined extended: provide extended option backend.js:17:17*/
+
+/*y al entrar sale
+express deprecated res.sendfile: Use res.sendFile instead backend.js:34:6
+acá debajo estan las variables :)
+{ usuario: 'Jhon', clave: 'jajaj', enviar: 'Entrar' }*/
